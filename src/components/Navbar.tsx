@@ -1,101 +1,104 @@
-import { Link, NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { navLinks } from '../data/content';
-import { useUiStore } from '../store/uiStore';
-import { classNames } from '../utils/classNames';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUIStore } from '../store/modalStore';
 
-export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { openJoinModal, theme, toggleTheme } = useUiStore();
+export const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { mobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Services', path: '/services' },
+    { label: 'Our Works', path: '/works' },
+    { label: 'Events', path: '/events' },
+    { label: 'Book Studio', path: '/studio' },
+    { label: 'Blogs', path: '/blogs' },
+    { label: 'Contact', path: '/contact' },
+  ];
+
+  const handleNavClick = (path: string) => {
+    navigate(path);
+    closeMobileMenu();
+  };
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-3 text-sm font-semibold text-white">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-500 text-lg font-black text-white shadow-glow">
-            TTT
-          </div>
-          <span>
-            Thespian&apos;s <span className="text-brand-400">Tribe</span>
-          </span>
-        </Link>
-
-        <div className="hidden items-center gap-2 md:flex">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                classNames(
-                  'rounded-full px-3 py-2 text-xs font-medium transition-all duration-200',
-                  isActive ? 'bg-slate-800 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-white'
-                )
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+    <>
+      {/* Desktop & Mobile Navbar */}
+      <nav
+        className={`fixed top-0 w-full z-40 px-4 sm:px-8 transition-all duration-300 ${
+          isScrolled ? 'bg-black/97' : 'bg-gradient-to-b from-black/95 to-transparent'
+        }`}
+      >
+        <div className="flex items-center justify-between h-[60px]">
+          {/* Logo */}
           <button
-            onClick={openJoinModal}
-            className="rounded-full bg-brand-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-600"
+            onClick={() => handleNavClick('/')}
+            className="text-base sm:text-xl font-black text-red-600 tracking-wider flex-shrink-0 cursor-pointer hover:text-red-500 transition-colors"
           >
-            Join the Tribe
+            ANIRADICHITA
           </button>
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-300 transition hover:border-slate-500 hover:text-white"
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
-        </div>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen((state) => !state)}
-          className="inline-flex items-center justify-center rounded-full border border-slate-800 bg-slate-900 p-2 text-slate-300 transition hover:border-slate-600 hover:text-white md:hidden"
-          aria-label="Toggle navigation"
-        >
-          <span>{isOpen ? '✕' : '☰'}</span>
-        </button>
-      </div>
-
-      {isOpen ? (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="border-t border-slate-800 bg-slate-950/95 md:hidden"
-        >
-          <div className="space-y-2 px-4 pb-4 pt-3">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  classNames(
-                    'block rounded-2xl px-4 py-3 text-sm font-medium transition-all',
-                    isActive ? 'bg-slate-800 text-white' : 'text-slate-400 hover:bg-slate-900 hover:text-white'
-                  )
-                }
+          {/* Desktop Links */}
+          <div className="hidden md:flex gap-4 lg:gap-6 flex-1 ml-8 lg:ml-12">
+            {navLinks.map(({ label, path }) => (
+              <button
+                key={path}
+                onClick={() => handleNavClick(path)}
+                className="text-xs font-medium text-gray-400 hover:text-white transition-colors uppercase tracking-wide whitespace-nowrap"
               >
-                {link.label}
-              </NavLink>
+                {label}
+              </button>
             ))}
+          </div>
+
+          {/* Search & Mobile Menu */}
+          <div className="flex items-center gap-3">
+            <input
+              type="text"
+              placeholder="🔍 Search..."
+              className="hidden lg:block bg-gray-900/80 border border-gray-700 text-white px-3 py-1.5 rounded text-xs outline-none focus:border-gray-500 transition-colors w-32"
+            />
+            
+            {/* Hamburger Menu */}
             <button
-              onClick={() => {
-                openJoinModal();
-                setIsOpen(false);
-              }}
-              className="w-full rounded-2xl bg-brand-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+              onClick={toggleMobileMenu}
+              className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
+              aria-label="Toggle menu"
             >
-              Join the Tribe
+              <span className="w-5 h-0.5 bg-white rounded block"></span>
+              <span className="w-5 h-0.5 bg-white rounded block"></span>
+              <span className="w-5 h-0.5 bg-white rounded block"></span>
             </button>
           </div>
-        </motion.div>
-      ) : null}
-    </header>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed top-[60px] left-0 w-full bg-black/98 z-39 border-t border-gray-900 md:hidden">
+          <div className="flex flex-col gap-0">
+            {navLinks.map(({ label, path }) => (
+              <button
+                key={path}
+                onClick={() => handleNavClick(path)}
+                className="px-4 py-3 text-sm text-gray-300 hover:text-white border-b border-gray-900 text-left transition-colors"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
-}
+};

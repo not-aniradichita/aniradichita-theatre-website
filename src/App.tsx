@@ -1,12 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
-import { CastingPage } from './pages/CastingPage';
-import { CommunityPage } from './pages/CommunityPage';
-import { HomePage } from './pages/HomePage';
-import { MembersPage } from './pages/MembersPage';
-import { ProfilePage } from './pages/ProfilePage';
-import { RitualsPage } from './pages/RitualsPage';
+import { HomePage } from './pages/AniradichitaHome';
+import {
+  AboutPage,
+  ServicesPage,
+  WorksPage,
+  EventsPage,
+  StudioPage,
+  BlogsPage,
+  ContactPage,
+} from './pages/AniradichitaPages';
+import { QuoteModal, TicketModal, RSVPModal } from './components/Modals';
 
 const pageTransition = {
   hidden: { opacity: 0, y: 18 },
@@ -31,14 +36,21 @@ function App() {
         >
           <Routes location={location}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/casting" element={<CastingPage />} />
-            <Route path="/rituals" element={<RitualsPage />} />
-            <Route path="/members" element={<MembersPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/works" element={<WorksPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/studio" element={<StudioPage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
+
+      {/* Modals */}
+      <QuoteModal />
+      <TicketModal />
+      <RSVPModal />
     </MainLayout>
   );
 }

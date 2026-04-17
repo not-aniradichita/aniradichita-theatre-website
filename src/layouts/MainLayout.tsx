@@ -1,26 +1,17 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Footer } from '../components/Footer';
-import { JoinModal } from '../components/JoinModal';
 import { Navbar } from '../components/Navbar';
-import { useUiStore } from '../store/uiStore';
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  const { theme } = useUiStore();
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
-      <main className="relative overflow-hidden">{children ?? <Outlet />}</main>
-      <JoinModal />
+      <main className="relative overflow-hidden pt-[60px]">{children ?? <Outlet />}</main>
       <Footer />
     </div>
   );
