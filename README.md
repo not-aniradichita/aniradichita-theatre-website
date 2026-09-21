@@ -74,6 +74,22 @@ src/
 └── styles/        # Global styles
 ```
 
+## Events (`events.html` / `event.html`)
+
+The static site pages at the repo root include an Events section:
+
+| File | Role |
+| --- | --- |
+| `assets/data/events.js` | **All event content.** Add/edit events here (fields documented at the top of the file). |
+| `assets/js/events.js` | Classifies, sorts, filters and renders events; SEO metadata; countdown; gallery. |
+| `assets/js/ticketing.js` | Turns an event's `ticketing` config into a UI state. No markup, no payment code. |
+| `assets/css/events.css` | Events styling (builds on `style.css` tokens). |
+| `assets/images/events/` | Local event artwork (e.g. the Sunday Decodes poster). |
+
+- **Upcoming vs. past is computed from dates** (Asia/Kolkata, end of `endDate`/`date`), so an event moves to *Past Events* by itself. Events without a `date` fall back to their `status` field.
+- **Connect Razorpay:** in `assets/data/events.js`, set the event's `ticketing.checkoutUrl` to the Razorpay payment-page URL (must be `https://`). The disabled *Tickets Releasing Soon* button becomes a live *Book Tickets* link. Optionally set `ticketing.opensAt` (ISO time) to schedule the switch.
+- Detail pages are `event.html?e=<slug>`.
+
 ## Contributing
 
 1. Fork the repository

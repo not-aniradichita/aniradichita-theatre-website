@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Events | Aniradichita Theatre &amp; Films Association</title>
+<meta name="description" content="Live and upcoming events, screenings, workshops and talks from Aniradichita Theatre &amp; Films Association — plus our archive of past events.">
+<link rel="canonical" href="https://aniradichita.com/events.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aniradichita Theatre &amp; Films Association">
+<meta property="og:title" content="Events | Aniradichita Theatre &amp; Films Association">
+<meta property="og:description" content="Live and upcoming events, screenings, workshops and talks from Aniradichita Theatre &amp; Films Association — plus our archive of past events.">
+<meta property="og:url" content="https://aniradichita.com/events.html">
+<meta property="og:image" content="https://aniradichita.com/assets/images/events/sunday-decodes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Events | Aniradichita Theatre &amp; Films Association">
+<meta name="twitter:description" content="Live and upcoming events, screenings, workshops and talks from Aniradichita Theatre &amp; Films Association — plus our archive of past events.">
+<meta name="twitter:image" content="https://aniradichita.com/assets/images/events/sunday-decodes.jpg">
+<link rel="icon" href="https://aniradichita.com/assets/atfa-logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/events.css">
+</head>
+<body class="ev-page" data-events-view="index">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://aniradichita.com/assets/atfa-logo.png" alt="Aniradichita Theatre &amp; Films Association logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="events.html" class="active" aria-current="page">Events</a>
+      <a href="book-studio.html">Book Studio</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-search"><input type="search" placeholder="🔍 Search..." aria-label="Search"></div>
+    <button class="nav-burger" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="services.html">🎭 Services</a>
+  <a href="events.html" class="active">🎟️ Events</a>
+  <a href="book-studio.html">🎙️ Book Studio</a>
+  <a href="blogs.html">📝 Blogs</a>
+  <a href="contact.html">📞 Contact</a>
+  <div class="nav-search"><input type="search" placeholder="🔍 Search..." aria-label="Search"></div>
+</div>
+
+<main id="main">
+
+  <!-- PAGE HERO -->
+  <section class="ev-hero">
+    <div class="container">
+      <span class="sec-label">Theatre · Cinema · Community</span>
+      <h1>Events</h1>
+      <p>Screenings, workshops, talks and competitions — what is showing next, and everything we have staged so far.</p>
+      <div class="ev-hero-links">
+        <a href="#live" class="btn btn-red">🎟️ Live &amp; Upcoming</a>
+        <a href="#past" class="btn btn-dark">Past Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE / UPCOMING (rendered from assets/data/events.js) -->
+  <section class="ev-block" id="live" aria-labelledby="live-h">
+    <div class="container">
+      <div class="ev-block-hd">
+        <div>
+          <span class="sec-label">Now showing · Coming soon</span>
+          <h2 id="live-h">Live <em>&amp;</em> Upcoming</h2>
+        </div>
+        <p class="ev-block-count" id="liveCount"></p>
+      </div>
+      <div id="liveMount">
+        <noscript><p class="ev-empty">Please enable JavaScript to see our events.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS (rendered from assets/data/events.js) -->
+  <section class="ev-block" id="past" aria-labelledby="past-h">
+    <div class="container">
+      <div class="ev-block-hd">
+        <div>
+          <span class="sec-label">The archive</span>
+          <h2 id="past-h">Past <em>Events</em></h2>
+        </div>
+        <p class="ev-block-count" id="pastCount"></p>
+      </div>
+      <div class="ev-filters" id="pastFilters" role="group" aria-label="Filter past events by type"></div>
+      <p class="ev-past-status" id="pastStatus" role="status" aria-live="polite"></p>
+      <div class="ev-grid" id="pastGrid"></div>
+      <div class="ev-more-wrap"><button type="button" class="btn btn-dark" id="pastMore" hidden>Show more events</button></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://aniradichita.com/assets/atfa-logo.png" alt="Aniradichita Theatre &amp; Films logo">
+        <p>India's first holistic Art &amp; Culture based startup — registered with Startup India. Section 8 Not-for-Profit.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="book-studio.html">Book Studio</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <span>Pravartan</span>
+        <span>Aakhyan</span>
+        <span>Aamarsh</span>
+        <span>Abhisarg</span>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.facebook.com/aniradichita" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/aniradichita_theatre_films/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/aniradichita" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="book-studio.html">Book Studio</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Aniradichita Theatre and Films Association · All Rights Reserved · Section 8 Not-for-Profit<br>
+      Made with ❤️ for Performing Arts
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/data/events.js"></script>
+<script src="assets/js/ticketing.js"></script>
+<script src="assets/js/events.js"></script>
+</body>
+</html>

@@ -1,16 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Thespian's Tribe</title>
-    <meta
-      name="description"
-      content="A modern React app for The Thespian's Tribe — performing arts community ecosystem."
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aniradichita Theatre &amp; Films Association | Where Art Meets Business</title>
+<meta name="description" content="India's first Performing Arts As A Service (PAaaS) startup — blending drama, music, dance &amp; film into marketing, CSR, training &amp; education for businesses of every size.">
+<link rel="canonical" href="https://aniradichita.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aniradichita Theatre &amp; Films Association">
+<meta property="og:title" content="Aniradichita Theatre &amp; Films Association | Where Art Meets Business">
+<meta property="og:description" content="India's first Performing Arts As A Service (PAaaS) startup — blending drama, music, dance &amp; film into marketing, CSR, training &amp; education for businesses of every size.">
+<meta property="og:url" content="https://aniradichita.com/">
+<meta property="og:image" content="https://aniradichita.com/assets/atfa-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aniradichita Theatre &amp; Films Association">
+<meta name="twitter:description" content="India's first Performing Arts As A Service (PAaaS) startup.">
+<meta name="twitter:image" content="https://aniradichita.com/assets/atfa-logo.png">
+<link rel="icon" href="https://aniradichita.com/assets/atfa-logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aniradichita Theatre and Films Association",
+  "alternateName": "Aniradichita",
+  "url": "https://aniradichita.com/",
+  "logo": "https://aniradichita.com/assets/atfa-logo.png",
+  "description": "India's first holistic Art & Culture based startup registered with Startup India, providing Performing Arts As A Service (PAaaS) — marketing, training, CSR and events built on drama, music, dance and film.",
+  "founder": {
+    "@type": "Person",
+    "name": "Aniket Parimal Pandya",
+    "sameAs": [
+      "https://www.linkedin.com/in/aniket-pandya-5a161815/",
+      "https://www.instagram.com/aniradichita",
+      "https://www.facebook.com/Aniketpandya.507"
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vadodara",
+    "addressRegion": "Gujarat",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.facebook.com/aniradichita",
+    "https://www.instagram.com/aniradichita_theatre_films/",
+    "https://www.linkedin.com/company/aniradichita"
+  ]
+}
+</script>
+</head>
+<body class="has-ticker">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://aniradichita.com/assets/atfa-logo.png" alt="Aniradichita Theatre &amp; Films Association logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="events.html">Events</a>
+      <a href="book-studio.html">Book Studio</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-search"><input type="search" placeholder="🔍 Search..." aria-label="Search"></div>
+    <button class="nav-burger" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="active">🏠 Home</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="services.html">🎭 Services</a>
+  <a href="events.html">🎟️ Events</a>
+  <a href="book-studio.html">🎙️ Book Studio</a>
+  <a href="blogs.html">📝 Blogs</a>
+  <a href="contact.html">📞 Contact</a>
+  <div class="nav-search"><input type="search" placeholder="🔍 Search..." aria-label="Search"></div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">★ First Holistic Art &amp; Culture Based Startup · Registered With Startup India</span>
+      <h1>Where <span class="accent">Art</span> Meets Business</h1>
+      <p class="tagline">"Hum Aap ke PAaaS Hai"</p>
+      <p class="lead">India's first Performing Arts As A Service startup — blending drama, music, dance &amp; film into marketing, CSR, training &amp; education for all businesses.</p>
+      <div class="hero-ctas">
+        <a href="services.html" class="btn btn-primary">▶ Our Services</a>
+        <a href="about.html" class="btn btn-dark">ℹ More Info</a>
+        <a href="book-studio.html" class="btn btn-red">🎙️ Book Studio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE NEWS TICKER (home only, fixed to bottom of viewport) -->
+  <div class="news-bar">
+    <div class="news-live"><span class="dot"></span> Live Dispatch</div>
+    <div class="news-track-wrap"><div class="news-track" id="newsTrack"></div></div>
+    <button class="news-refresh" onclick="refreshNews()">↻ Refresh</button>
+  </div>
+
+  <!-- IMPACT STATS -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="sec-hd center" style="margin-bottom:36px;">
+        <span class="sec-label">★ The Impact We've Made</span>
+        <h2>Numbers that tell the story</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🎭</div>
+          <div class="stat-num" data-target="1000" data-suffix="+">0+</div>
+          <div class="stat-label">Artists Impacted</div>
+          <div class="stat-sub">Performers, students &amp; creators who've collaborated with us across India.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌏</div>
+          <div class="stat-num" data-target="10" data-suffix="M+">0M+</div>
+          <div class="stat-label">Lives Reached</div>
+          <div class="stat-sub">Audiences moved by our performances, campaigns, films &amp; CSR projects.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎨</div>
+          <div class="stat-num" data-target="12" data-suffix="+">0+</div>
+          <div class="stat-label">Art Forms</div>
+          <div class="stat-sub">From Bhavai &amp; street theatre to film, music, dance &amp; spoken word.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🇮🇳</div>
+          <div class="stat-num">Startup India</div>
+          <div class="stat-label">Registered</div>
+          <div class="stat-sub">India's 1st holistic Art &amp; Culture based startup — Section 8 Not-for-Profit.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section>
+    <div class="container">
+      <div class="sec-hd"><h2>From Our Performances</h2></div>
+      <div class="gal-grid">
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240712_193542-1.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240712_193542-1.jpg" alt="Aniradichita performance 1" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240711_191733.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240711_191733.jpg" alt="Aniradichita performance 2" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240224-wa0056.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240224-wa0056.jpg" alt="Aniradichita performance 3" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240423-wa0021.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240423-wa0021.jpg" alt="Aniradichita performance 4" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240423-wa0012.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/img-20240423-wa0012.jpg" alt="Aniradichita performance 5" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240112_132625.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240112_132625.jpg" alt="Aniradichita performance 6" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240928_132110.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/10/20240928_132110.jpg" alt="Aniradichita performance 7" loading="lazy"></a>
+        <a href="https://aniradichita.wordpress.com/wp-content/uploads/2024/01/1g9a77061.jpg" target="_blank" rel="noopener"><img src="https://aniradichita.wordpress.com/wp-content/uploads/2024/01/1g9a77061.jpg" alt="Aniradichita performance 8" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI GENERATOR TEASER -->
+  <section class="tight">
+    <div class="container">
+      <div class="gen-sec" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <span class="sec-label">✨ AI-Powered · Exclusive Tool</span>
+          <h2 style="font-size:1.6rem;font-weight:800;margin:8px 0;">Generate Your Script with AI</h2>
+          <p style="color:#bbb;max-width:520px;">Describe your idea or goal in any Indian language and let our AI craft a complete theatre/drama/film script concept — across genres, art forms, and durations.</p>
+        </div>
+        <a href="services.html#genAnchor" class="btn btn-red">▶ Try the Generator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORKS teaser -->
+  <section>
+    <div class="container">
+      <div class="sec-hd center">
+        <h2>🎭 AI + Theatre</h2>
+        <p>Performing Arts meets Artificial Intelligence for real social impact</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://aniradichita.com/assets/atfa-logo.png" alt="Aniradichita Theatre &amp; Films logo">
+        <p>India's first holistic Art &amp; Culture based startup — registered with Startup India. Section 8 Not-for-Profit.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="book-studio.html">Book Studio</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <span>Pravartan</span>
+        <span>Aakhyan</span>
+        <span>Aamarsh</span>
+        <span>Abhisarg</span>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.facebook.com/aniradichita" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/aniradichita_theatre_films/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/aniradichita" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="book-studio.html">Book Studio</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Aniradichita Theatre and Films Association · All Rights Reserved · Section 8 Not-for-Profit<br>
+      Made with ❤️ for Performing Arts
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
 </html>
